@@ -17,7 +17,7 @@ A full end-to-end test automation framework for the Sauce Demo application, buil
 
 1. **Clone & install dependencies**  
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/RogerRabbitMagnaCarta/swaglabs-automation-framework-typescript-playwright-.git
    cd swaglabs-automation-framework-typescript-playwright
    npm install
    ```
