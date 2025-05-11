@@ -31,10 +31,8 @@ jobs:
 
       - name: Seed SQLite test database
         run: |
-          # ensure sqlite3 is available
           sudo apt-get update
           sudo apt-get install -y sqlite3
-          # initialize schema + seed data
           sqlite3 test/db/data.db < test/db/init.sql
 
       - name: Run Cucumber tests
@@ -44,7 +42,7 @@ jobs:
         run: npm run report
 
       - name: Upload HTML report artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: cucumber-html-report
           path: reports/report.html
