@@ -114,10 +114,3 @@ But for a **focused demo** or **small-to-medium** app with well-understood flows
 - **Aligns** directly with Gherkin’s domain-language style.  
 - **Minimizes** maintenance overhead.  
 
----
-
-### Bottom Line
-
-> Once your team “speaks the business language,” generic steps + feature files give you full coverage with minimal code.  
-> Page objects can wait until your app’s size or complexity truly demands them.  
-> Keep your tests readable, DRY, and easy to evolve as your product does.
