@@ -52,3 +52,4 @@ Feature: Complete End-to-End User Journey
     | standard_user          |
     | problem_user           |
     | performance_glitch_user|
+    | locked_out_user|
