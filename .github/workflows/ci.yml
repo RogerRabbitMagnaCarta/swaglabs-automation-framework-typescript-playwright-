@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
@@ -27,19 +27,8 @@ jobs:
         run: npm ci
 
       - name: Run Cucumber tests
-        run: npm run test:cucumber -- --format json:reports/report.json
+        # this will execute your `test:cucumber` script
+        run: npm run test:cucumber -- --format progress --format json:reports/report.json
 
       - name: Generate HTML report
         run: npm run report
-
-      - name: Upload Cucumber JSON
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: cucumber-json
-          path: reports/report.json
-
-      - name: Upload HTML report
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: cucumber-html
-          path: reports/report.html
