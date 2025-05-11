@@ -7,6 +7,16 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  # point custom-world.ts’s goto() at the live Swag Demo site
+  BASE_URL: https://www.saucedemo.com/v1
+  # where our SQLite helper will look for data.db
+  DB_PATH: test/db/data.db
+  # headless mode, and Cucumber timeouts
+  HEADLESS: 'true'
+  STEP_TIMEOUT: '10000'
+  LOGIN_TIMEOUT: '60000'
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -29,11 +39,11 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Seed SQLite test database
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sqlite3
-          sqlite3 test/db/data.db < test/db/init.sql
+      - name: Install sqlite3
+        run: sudo apt-get update && sudo apt-get install -y sqlite3
+
+      - name: Seed test database
+        run: sqlite3 $DB_PATH < test/db/init.sql
 
       - name: Run Cucumber tests
         run: npm run test:cucumber -- --format progress --format json:reports/report.json
@@ -41,8 +51,8 @@ jobs:
       - name: Generate HTML report
         run: npm run report
 
-      - name: Upload HTML report artifact
-        uses: actions/upload-artifact@v3.1.1
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v2
         with:
           name: cucumber-html-report
           path: reports/report.html
