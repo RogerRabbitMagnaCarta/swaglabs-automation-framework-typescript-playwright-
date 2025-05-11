@@ -48,7 +48,7 @@ jobs:
         run: npm run report
 
       - name: Upload HTML report
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3
         with:
           name: cucumber-html-report
           path: reports/report.html
