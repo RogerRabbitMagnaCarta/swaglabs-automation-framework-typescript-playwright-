@@ -1,0 +1,14 @@
+/* assets/report-style.css */
+
+/* Float the logo image to the left of the header */
+.logo img,
+.navbar-brand img {
+  float: left !important;
+  margin-right: 10px;
+}
+
+/* Make sure the header text wraps nicely */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
