@@ -21,11 +21,6 @@ Then(
       const expectedFile = item.image_path;
 
       const filenameInSrc = src.replace(/^.*[\\/]/, '');
-      console.log(`VERIFY IMAGE — Product: "${item.name}"`);
-      console.log(`  raw src:          ${src}`);
-      console.log(`  filenameInSrc:    ${filenameInSrc}`);
-      console.log(`  expectedFile:     ${expectedFile}`);
-      console.log(`  endsWith?         ${filenameInSrc.endsWith(expectedFile)}`);
       expect(filenameInSrc.endsWith(expectedFile)).toBe(true);
 
       const fullUrl  = new URL(src, this.page.url()).href;

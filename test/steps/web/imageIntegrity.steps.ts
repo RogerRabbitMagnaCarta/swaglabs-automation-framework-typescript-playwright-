@@ -31,8 +31,6 @@ When(
     if (imageUrls.length === 0) {
       throw new Error('No product images found on the inventory page');
     }
-
-    console.log('[ImageIntegrity] Collected image URLs:', imageUrls);
   }
 );
 
@@ -41,14 +39,12 @@ Then(
   async function(this: CustomWorld) {
     for (const url of imageUrls) {
       const r = await this.page.request.get(url);
-      console.log(`[ImageIntegrity] GET ${url} → ${r.status()}`);
       expect(
         r.status(),
         `Expected 200 but got ${r.status()} for ${url}`
       ).toBe(200);
 
       const body = await r.body();
-      console.log(`[ImageIntegrity] Content length for ${url}: ${body.length}`);
       expect(
         body.length,
         `Expected non-zero body length for ${url}`
