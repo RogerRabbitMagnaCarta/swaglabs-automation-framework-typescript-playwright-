@@ -7,11 +7,11 @@ on:
     branches: [ main ]
 
 env:
-  BASE_URL:     https://www.saucedemo.com/v1
-  DB_PATH:      test/db/data.db
-  HEADLESS:     'true'
-  STEP_TIMEOUT: '10000'
-  LOGIN_TIMEOUT:'60000'
+  BASE_URL:       https://www.saucedemo.com/v1
+  DB_PATH:        test/db/data.db
+  HEADLESS:       'true'
+  STEP_TIMEOUT:   '10000'
+  LOGIN_TIMEOUT:  '60000'
 
 jobs:
   test:
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
